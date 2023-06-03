@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>貸款試算0.1</title>
 </head>
+<style>
+    form{
+        background-color: blanchedalmond;
+        padding: 16px;
+        border-radius: 12px;
+        width: 50%;
+    }
+</style>
 <body>
     <h1>貸款利息計算機</h1>
     <form>
-        <label for="Amount">貸款金額</label>
-        <input type="number" name="Amount" id="Amount"><br>
+        <label for="amount">貸款金額</label>
+        <input type="number" name="amount" id="amount" value="100000"><br>
         <label for="interestRate">貸款利息</label>
-        <input type="number" name="interestRate" id="interestRate"><br>
+        <input type="number" name="interestRate" id="interestRate" value="10"><br>
         <label for="term">還款週期</label>
         <select name="term" id="term">
             <option value="3">3年</option>
@@ -20,11 +28,56 @@
             <option value="7">7年</option>
             <option value="20">20年</option>
         </select><br>
-        <label for="">還款方式</label>
-        <input type="radio" name="replacement" id="principalRepayment">本金攤還
+        <label>還款方式</label>
+        <input type="radio" name="replacement" id="principalRepayment" checked>本金攤還
         <input type="radio" name="replacement" id="AmortizationInterest">本息攤還<br>
-        <button>計算</button>
+        <button type="button" onclick= "calc()">計算</button>
     </form>
+
+    <script>
+        const amountEl=document.querySelector("#amount");
+        const interestRateEl=document.querySelector("#interestRate");
+        const termEl=document.querySelector("#term");
+
+        console.log(resultEl);
+        resultEl.innerHTML="<h1>目前結果</h1>"
+
+        function calc(){
+            amount=amountEl.value;
+            interestRate=interestRateEl.value;
+            term=termEl.value;
+
+            console.log(amount,interestRate,term)
+            
+            let period=term*12;
+            let monthReplacement=parseInt(amount/period);
+
+            let totalInterest=0;
+
+            for (let i=0; i< period;i++){
+                let interest=Math.round(amount*(interestRate/100/12));
+                totalInterest+=interest;
+                if (i==period-1){
+                    let monthReplacement=amount;
+                    let text = `期別${i+1} 償還本金:${monthReplacement} 償還利息:${interest} 
+                    償還本利和 ${monthReplacement+interest} 貸款餘額:${amount-monthReplacement}`;
+                    
+                    console.log(text);
+            
+                }
+                else{
+                    let text=`期別${i+1} 償還本金:${monthReplacement} 償還利息:${interest} 
+                    償還本利和 ${monthReplacement+interest} 貸款餘額:${amount-monthReplacement}`
+                    console.log(text);
+                    amount=amount-monthReplacement;
+                }
+            }
+
+
+    
+        }
+
+    </script>
     
 </body>
 </html>
