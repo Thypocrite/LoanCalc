@@ -14,7 +14,7 @@
         <h1>貸款利息計算機</h1>
         <form>
             <label for="loanAmount">貸款金額</label>
-            <input type="number" name="loanAmount" id="loanAmount" value="100000">元<br>
+            <input type="number" name="loanAmount" id="loanAmount" value="100">萬元<br>
             <label for="interestRate">貸款利率</label>
             <input type="number" name="interestRate" id="interestRate" value="10">年利率<br>
             <label for="loanTerm">還款週期</label>
@@ -23,12 +23,14 @@
                 <option value="5">5年</option>
                 <option value="7">7年</option>
                 <option value="20">20年</option>
-            </select><br>
+            </select>
+            <input type="number" name="" id="yearLoanTerm" placeholder="自行輸入年份" min="1" max="100">年
+            <br>
             <label>還款方式</label>
             <input type="radio" name="replacement" id="PrincipalRepayment" checked>本金攤還
             <input type="radio" name="replacement" id="AmortizationInterest">本息攤還
             <br>
-            <button type="button" onclick="calcB()">計算</button>
+            <button type="button" onclick="insertDataToTable()">計算</button>
         </form>
         <div id="result">
 
@@ -44,14 +46,9 @@
                 </tr>
             </thead>
         </table>
-        
+
     </div>
     <script src="index.js"></script>
-
-    
-
-    
-       
 </body>
 
 </html>
