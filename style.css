@@ -1,0 +1,39 @@
+form {
+    background-color: antiquewhite;
+    padding: 24px;
+    border-radius: 12px;
+    width: 300px;
+    margin: auto;
+    text-align: left;
+}
+
+th{
+    background-color: rgb(227, 177, 110);
+}
+td{
+   background-color: antiquewhite; 
+}
+
+th,td{
+    border: 1px solid black;
+}
+
+#container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+table{
+    width: 75%;
+    margin: 24px auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+@media screen (max-width:768px) {
+    table{
+        width: 50%;
+    }
+    
+}
